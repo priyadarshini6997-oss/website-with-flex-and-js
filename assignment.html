@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World Cuisines Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .navbar {
+      display: flex;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .navbar a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #555;
+    }
+
+    
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .item {
+      background-color: #ffe0b2;
+      padding: 15px;
+      border-radius: 5px;
+      flex: 1 1 200px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      min-width: 120px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #666;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <div class="dropdown">
+      <a href="#">More ▼</a>
+      <div class="dropdown-content">
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div id="home" class="page active">
+    <h2>Famous Cuisines Around the World</h2>
+    <p>Here are some popular cuisines from different countries:</p>
+    <div id="cuisineContainer" class="flex-container"></div>
+  </div>
+
+  
+  <div id="about" class="page">
+    <h2>About Us</h2>
+    <p>We love exploring delicious food and sharing cuisines from all over the world!</p>
+  </div>
+
+  
+  <div id="contact" class="page">
+    <h2>Contact Us</h2>
+    <p>Email: worldcuisine@example.com</p>
+    <p>Phone: +91 9876543210</p>
+  </div>
+
+  <script>
+    
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    const cuisines = [
+      "Italian Cuisine - Pasta, Pizza",
+      "Indian Cuisine - Biryani, Butter Chicken",
+      "Japanese Cuisine - Sushi, Ramen",
+      "Mexican Cuisine - Tacos, Burritos",
+      "Chinese Cuisine - Noodles, Dim Sum",
+      "French Cuisine - Croissants, Ratatouille",
+      "Thai Cuisine - Pad Thai, Green Curry",
+      "Greek Cuisine - Moussaka, Souvlaki",
+      "American Cuisine - Burgers, BBQ",
+      "Turkish Cuisine - Kebabs, Baklava"
+    ];
+
+    
+    const container = document.getElementById("cuisineContainer");
+    cuisines.forEach(cuisine => {
+      const div = document.createElement("div");
+      div.classList.add("item");
+      div.textContent = cuisine;
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
